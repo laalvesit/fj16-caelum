@@ -1,6 +1,5 @@
 package br.com.caelum.argentum.reader;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +21,7 @@ public class TesteCandlestickFactory {
 		Candlestick candle = factory.constroiCandleParaData(hoje, negocios);
 		
 		System.out.println(candle);
+		System.out.println(negocio1);
 //		System.out.println("Abertura: "+ candle.getAbertura());
 //		System.out.println("Fechamento: "+ candle.getFechamento());
 //		System.out.println("Minimo: "+ candle.getMinimo());

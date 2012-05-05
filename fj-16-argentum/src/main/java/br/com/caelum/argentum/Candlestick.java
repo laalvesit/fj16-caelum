@@ -13,6 +13,14 @@ public final class Candlestick {
 	
 	public Candlestick(double abertura, double fechamento, double minimo,
 			double maximo, double volume, Calendar data) {
+		
+		if (minimo > maximo) {
+			throw new IllegalArgumentException();
+		}
+		if (data == null) {
+			throw new IllegalArgumentException();
+		}
+		
 		this.abertura = abertura;
 		this.fechamento = fechamento;
 		this.minimo = minimo;
@@ -56,11 +64,11 @@ public final class Candlestick {
 	@Override
 	public String toString() {
 		StringBuilder stb = new StringBuilder();
-		stb.append(this.getAbertura());
-		stb.append(this.getFechamento());
-		stb.append(this.getMinimo());
-		stb.append(this.getMaximo());
-		stb.append(this.getVolume());
+		stb.append(this.getAbertura()+"\n");
+		stb.append(this.getFechamento()+"\n");
+		stb.append(this.getMinimo()+"\n");
+		stb.append(this.getMaximo()+"\n");
+		stb.append(this.getVolume()+"\n");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		stb.append(sdf.format(this.getData().getTime()));
 		return "Resultado: "+ stb.toString(); 

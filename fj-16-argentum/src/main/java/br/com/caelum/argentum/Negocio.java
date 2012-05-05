@@ -1,5 +1,6 @@
 package br.com.caelum.argentum;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public final class Negocio {
@@ -9,7 +10,7 @@ public final class Negocio {
 	
 	public Negocio(double preco, int quantidade, Calendar data) {
 		if (data == null) {
-			throw new IllegalArgumentException("data n„o pode ser nula");
+			throw new IllegalArgumentException("data n√£o pode ser nula");
 		}
 		
 		this.preco = preco;
@@ -31,5 +32,15 @@ public final class Negocio {
 	
 	public double getVolume() {
 		return preco * quantidade;		
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder strb = new StringBuilder();
+		strb.append(this.getPreco()+"\n");
+		strb.append(this.getQuantidade()+"\n");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		strb.append(sdf.format(this.getData().getTime()));
+		return strb.toString();
 	}
 }

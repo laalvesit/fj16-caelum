@@ -8,8 +8,8 @@ import br.com.caelum.argentum.Negocio;
 
 public class CandlestickFactory {
 	public Candlestick constroiCandleParaData(Calendar data, List<Negocio> negocios) {
-		double maximo = Double.MAX_VALUE;//negocios.get(0).getPreco();
-		double minimo = Double.MIN_VALUE;//negocios.get(0).getPreco();
+		double maximo = Double.MIN_VALUE;
+		double minimo = Double.MAX_VALUE;
 		double volume = 0;
 		
 		for (Negocio negocio : negocios) {
