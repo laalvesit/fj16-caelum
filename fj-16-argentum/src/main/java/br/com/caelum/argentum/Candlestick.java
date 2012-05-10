@@ -20,6 +20,9 @@ public final class Candlestick {
 		if (data == null) {
 			throw new IllegalArgumentException();
 		}
+		if ((abertura <= 0) || (fechamento <= 0) || (minimo <= 0) || (maximo <= 0) || (volume <= 0)){
+			throw new IllegalArgumentException("nenhum valor pode ser menor igual a zero no candlestick");
+		}
 		
 		this.abertura = abertura;
 		this.fechamento = fechamento;

@@ -20,6 +20,9 @@ public final class Candle {
 		if (data == null) {
 			throw new IllegalArgumentException();
 		}
+		if (volume == 0){
+			throw new IllegalArgumentException();
+		}
 		
 		this.abertura = abertura;
 		this.fechamento = fechamento;
@@ -71,6 +74,6 @@ public final class Candle {
 		stb.append(this.getVolume()+"\n");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		stb.append(sdf.format(this.getData().getTime()));
-		return "Resultado: "+ stb.toString(); 
+		return "Resultado: \n"+ stb.toString(); 
 	}
 }

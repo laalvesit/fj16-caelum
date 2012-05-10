@@ -33,16 +33,56 @@ public class CandlestickFactoryTest {
 		Assert.assertEquals(16760.0, candle.getVolume(), 0.00001);
 	}
 	
+	@Test
+	public void testNegociosEmOrdemCrescenteDeValor() {
+		Calendar hoje = Calendar.getInstance();
+		
+		Negocio negocio1 = new Negocio(10, 100, hoje);
+		Negocio negocio2 = new Negocio(20, 100, hoje);
+		Negocio negocio3 = new Negocio(30, 100, hoje);
+		
+		List<Negocio> negocios = Arrays.asList(negocio1, negocio2, negocio3);
+		
+		CandlestickFactory factory = new CandlestickFactory();
+		Candle candle = factory.constroiCandleParaData(hoje, negocios);
+		
+		Assert.assertEquals(10, candle.getAbertura(), 0.00001);
+		Assert.assertEquals(30, candle.getFechamento(), 0.00001);
+		Assert.assertEquals(10, candle.getMinimo(), 0.00001);
+		Assert.assertEquals(30, candle.getMaximo(), 0.00001);
+		Assert.assertEquals(6000.0, candle.getVolume(), 0.00001);
+	}
+	
+	@Test
+	public void testNegociosEmOrdemDecrescenteDeValor() {
+		Calendar hoje = Calendar.getInstance();
+		
+		Negocio negocio1 = new Negocio(30, 10, hoje);
+		Negocio negocio2 = new Negocio(20, 10, hoje);
+		Negocio negocio3 = new Negocio(10, 10, hoje);
+		
+		List<Negocio> negocios = Arrays.asList(negocio1, negocio2, negocio3);
+		CandlestickFactory factory = new CandlestickFactory();
+		Candle candle = factory.constroiCandleParaData(hoje, negocios);
+		
+		Assert.assertEquals(30, candle.getAbertura(), 0.00001);
+		Assert.assertEquals(10, candle.getFechamento(), 0.00001);
+		Assert.assertEquals(30, candle.getMaximo(), 0.00001);
+		Assert.assertEquals(10, candle.getMinimo(), 0.00001);
+		Assert.assertEquals(600, candle.getVolume(), 0.00001);
+	}
+	
 //	@Test
 //	public void testSemNegocio() throws Exception {
+////		nao passa testar sem negocio por que o minimo eh maior que o maximo no construtor
+////		do candle e lança um illegalargument
 //		Calendar hoje = Calendar.getInstance();
 //		
 //		List<Negocio> negocios = Arrays.asList();
-//		
 //		CandlestickFactory fabrica = new CandlestickFactory();
-//		Candlestick candle = fabrica.constroiCandleParaData(hoje, negocios);
+//		Candle candle = fabrica.constroiCandleParaData(hoje, negocios);
 //		
-////		Assert.assertEquals(0.0, candle.getVolume(), 0.00001);
+//		Assert.assertEquals(0.0, candle.getVolume(), 0.00001);
 //	}
 	
 	@Test
@@ -115,4 +155,26 @@ public class CandlestickFactoryTest {
 		Assert.assertEquals(51.8, candles.get(2).getAbertura(), 0.00001);
 		Assert.assertEquals(51.8, candles.get(2).getFechamento(), 0.00001);
 	}	
+	
+	@Test
+	public void testConstroiCandleDatasDesordenadas() {
+		Calendar hoje = Calendar.getInstance();
+		Calendar amanha = (Calendar) hoje.clone();
+		amanha.add(Calendar.DAY_OF_MONTH, 1);
+		Calendar depois = (Calendar) hoje.clone();
+		depois.add(Calendar.DAY_OF_MONTH, 2);
+		
+		Negocio negocio = new Negocio(10.0, 100, depois);
+		Negocio negocio1 = new Negocio(20.0, 100, hoje);
+		Negocio negocio2 = new Negocio(30, 100, amanha);
+		
+		List<Negocio> negocios = Arrays.asList(negocio, negocio1, negocio2);
+		CandlestickFactory fabrica = new CandlestickFactory();
+		List<Candle> candles = fabrica.constroiCandles(negocios);
+		
+		Assert.assertEquals(3, candles.size());
+		Assert.assertEquals(10.0, candles.get(0).getAbertura(), 0.00001);
+		Assert.assertEquals(20.0, candles.get(1).getAbertura(), 0.00001);
+		Assert.assertEquals(30.0, candles.get(2).getAbertura(), 0.00001);
+	}
 }

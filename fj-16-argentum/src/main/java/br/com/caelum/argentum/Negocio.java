@@ -10,7 +10,13 @@ public final class Negocio {
 	
 	public Negocio(double preco, int quantidade, Calendar data) {
 		if (data == null) {
-			throw new IllegalArgumentException("data n√£o pode ser nula");
+			throw new IllegalArgumentException("data n„o pode ser nula");
+		}
+		if (quantidade <= 0) {
+			throw new IllegalArgumentException("quantidade n„o pode ser menor que zero");
+		}
+		if (preco <= 0){
+			throw new IllegalArgumentException("o preco nao pode ser menor igual a zero");
 		}
 		
 		this.preco = preco;

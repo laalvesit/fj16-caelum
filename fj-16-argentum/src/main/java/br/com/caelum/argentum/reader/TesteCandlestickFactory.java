@@ -21,7 +21,7 @@ public class TesteCandlestickFactory {
 		Candle candle = factory.constroiCandleParaData(hoje, negocios);
 		
 		System.out.println(candle);
-		System.out.println(negocio1);
+//		System.out.println(negocio1);
 //		System.out.println("Abertura: "+ candle.getAbertura());
 //		System.out.println("Fechamento: "+ candle.getFechamento());
 //		System.out.println("Minimo: "+ candle.getMinimo());

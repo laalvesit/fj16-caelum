@@ -11,7 +11,7 @@ public class CandlestickFactory {
 	public Candle constroiCandleParaData(Calendar data, List<Negocio> negocios) {
 		double maximo = Double.MIN_VALUE;
 		double minimo = Double.MAX_VALUE;
-		double volume = 0;
+		double volume = 0.0;
 		
 		for (Negocio negocio : negocios) {
 			volume += negocio.getVolume();
@@ -56,8 +56,7 @@ public class CandlestickFactory {
 		return candles;
 	}
 
-	private void fechaCandle(List<Candle> candles,
-			List<Negocio> negociosMesmoDia, Calendar dataPrimeiro) {
+	private void fechaCandle(List<Candle> candles, List<Negocio> negociosMesmoDia, Calendar dataPrimeiro) {
 		Candle c = constroiCandleParaData(dataPrimeiro, negociosMesmoDia);
 		candles.add(c);
 	}
