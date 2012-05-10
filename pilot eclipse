@@ -1,0 +1,11 @@
+ctrl + / 		- comentario
+ctrl + f7 		- navega no eclipse
+ctrl + o 		- mostra os metodos da classe
+
+ctrl + shift + T 				- abre as classes conforme digitado
+
+alt + shift + a 				- cria selecao de bloco, varias linhas de uma vez so
+
+Test + ctrl + space + space 	- cria method de testes no junit
+
+f3 - em cima da classe abre a implementacao dela
