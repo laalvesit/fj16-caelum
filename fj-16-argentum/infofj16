@@ -1,0 +1,40 @@
+cecilia.fernandes@caelum.com.br
+@cecifernandes
+lab2501
+
+comecar softeware
+
+regras de negocio boa
+modelo de classe boa comecar com java
+modelo do bd nao eh boa
+telas nao eh boa
+
+
+abstract nao pode ser instanciado pq pode ter algum metodo abstract tambem
+
+final para atributo nao deixa que ele seja alterado
+
+final metodo nao pode ser override
+
+final classe nao pode ser herdada
+
+classe final com atributos final sao imutaveis
+
+convecao junit nome da classe de teste MesmoNomeTest
+
+colocar as classes em um source folder diferente
+
+metodos anotados @teste e teste sem anotacao nao eh teste
+
+comandos eclipse
+ctrl + / - comentario
+ctrl + f7 - navega no eclipse
+f3 - em cima da classe abre a implementacao dela
+ctrl + shift + T - abre as classes conforme digitado
+Test + ctrl + space + space - cria method de testes no junit
+alt + shift + a - cria selecao de bloco, varias linhas de uma vez so
+ctrl + o - mostra os metodos da classe
+alt + shift + r - refatoração renomear classes entre outros
+alt + shift + m - refatoracao cria um method com as linhas selecionadas
+alt + shift + o - refatoracao limpa imports nao utilizados
+alt + shift + t - lista refatoracao para a linha selecionada
