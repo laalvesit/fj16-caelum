@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.argentum.Candlestick;
+import br.com.caelum.argentum.Candle;
 import br.com.caelum.argentum.Negocio;
 
 public class TesteCandlestickFactory {
@@ -18,7 +18,7 @@ public class TesteCandlestickFactory {
 		
 		List<Negocio> negocios = Arrays.asList(negocio1, negocio2, negocio3, negocio4);
 		CandlestickFactory factory = new CandlestickFactory();
-		Candlestick candle = factory.constroiCandleParaData(hoje, negocios);
+		Candle candle = factory.constroiCandleParaData(hoje, negocios);
 		
 		System.out.println(candle);
 		System.out.println(negocio1);

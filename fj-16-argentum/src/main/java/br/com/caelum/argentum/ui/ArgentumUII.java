@@ -1,15 +1,23 @@
 package br.com.caelum.argentum.ui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.LineBorder;
+
+import br.com.caelum.argentum.Negocio;
 
 public class ArgentumUII {
 	private JFrame janela;
 	private JPanel painelPrincipal;
+	private JTable tabela;
 	
 	public static void main(String[] args) {
 		new ArgentumUII().montaTela();
@@ -18,11 +26,28 @@ public class ArgentumUII {
 	private void montaTela() {
 		montaJanela();
 		montaPainelPrincipal();
+		
+		montaTabelaComScroll();
+		
 		montaBotaoCarregar();
 		montaBotaoSair();
 		mostraJanela();
 	}
 	
+	private void montaTabelaComScroll() {
+		tabela = new JTable();
+		tabela.setBorder(new LineBorder(Color.black));
+		tabela.setGridColor(Color.black);
+		tabela.setShowGrid(true);
+		
+		JScrollPane scroll = new JScrollPane();
+		scroll.getViewport().setBorder(null);
+		scroll.getViewport().add(tabela);
+		scroll.setSize(450, 450);
+		
+		painelPrincipal.add(scroll);
+	}
+
 	private void montaJanela() {
 		janela = new JFrame("Argentum");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +77,9 @@ public class ArgentumUII {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new EscolherXML().escolher();
+				List<Negocio> negocios = new EscolherXML().escolher();
+				NegociosTableModel ntm = new NegociosTableModel(negocios);
+				tabela.setModel(ntm);
 			}
 		});
 		painelPrincipal.add(botaoCarregar);
