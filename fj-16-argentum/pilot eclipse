@@ -9,3 +9,5 @@ alt + shift + a 				- cria selecao de bloco, varias linhas de uma vez so
 Test + ctrl + space + space 	- cria method de testes no junit
 
 f3 - em cima da classe abre a implementacao dela
+
+ctrl + 3 - digitar extract interface

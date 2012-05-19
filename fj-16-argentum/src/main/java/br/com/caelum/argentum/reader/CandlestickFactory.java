@@ -43,6 +43,9 @@ public class CandlestickFactory {
 		Calendar  dataPrimeiro = negocios.get(0).getData();
 		
 		for (Negocio negocio : negocios) {
+			if (dataPrimeiro.after(negocio.getData())){
+				throw new IllegalStateException("negocios em ordem errada");
+			}
 			if (!isMesmoDia(dataPrimeiro, negocio.getData())) {
 				fechaCandle(candles, negociosMesmoDia, dataPrimeiro);
 				
